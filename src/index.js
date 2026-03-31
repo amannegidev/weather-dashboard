@@ -10,7 +10,7 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     primary: { main: '#2563eb' },
-    background: { default: '#f6f8fb' },
+    background: { default: '#000000' },
   },
   shape: { borderRadius: 12 },
   typography: {

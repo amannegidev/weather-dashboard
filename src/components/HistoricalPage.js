@@ -56,17 +56,21 @@ const HistoricalPage = () => {
     }
   };
 
-  if (gpsLoading) return <CircularProgress />;
+  if (gpsLoading) return (
+    <Box sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <CircularProgress />
+    </Box>
+  );
   if (gpsError) return <Typography color="error">{gpsError}</Typography>;
 
   return (
-    <Box sx={{ minHeight: '100vh', p: { xs: 2, sm: 4 }, background: 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #111827 100%)' }}>
+    <Box sx={{ minHeight: '100vh', p: { xs: 2, sm: 4 }}}>
       {/* Header */}
       <Box sx={{ 
         mb: 4, 
         py: 3,
-        background: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)',
-        borderRadius: 3,
+        
+        borderRadius: 1,
         px: 4,
         color: 'white',
         boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
@@ -80,7 +84,7 @@ const HistoricalPage = () => {
         p: { xs: 3, sm: 4 }, 
         mb: 3,
         borderRadius: 2.5,
-        background: 'rgba(31,41,55,0.8)',
+        background: 'none',
         backdropFilter: 'blur(10px)',
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
         border: '1px solid rgba(75, 85, 99, 0.3)'
@@ -128,7 +132,11 @@ const HistoricalPage = () => {
         </Stack>
       </Paper>
 
-      {loading && <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}><CircularProgress /></Box>}
+      {loading && (
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', py: 6 }}>
+          <CircularProgress />
+        </Box>
+      )}
       {error && <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>{error}</Alert>}
       {airQualityNotice && <Alert severity="warning" sx={{ mb: 3, borderRadius: 2 }}>{airQualityNotice}</Alert>}
 

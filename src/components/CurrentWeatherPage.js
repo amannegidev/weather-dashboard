@@ -92,10 +92,10 @@ const CurrentWeatherPage = () => {
   );
 
   return (
-    <div className="min-h-screen p-4 sm:p-8 space-y-6 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
+    <div className="min-h-screen p-4 sm:p-8 space-y-6 ">
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 text-white shadow-2xl border border-gray-700">
+      <div className=" rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 text-white shadow-2xl border border-gray-700">
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Weather Dashboard</h1>
           <p className="text-gray-300 text-sm mt-2">
