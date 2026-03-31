@@ -12,7 +12,6 @@ import {
   Sunrise,
   Wind,
   Droplets,
-  Sun,
   Gauge
 } from 'lucide-react';
 
