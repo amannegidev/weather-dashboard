@@ -49,7 +49,7 @@ const HourlyGraphs = ({ data, airData }) => {
       </Stack>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+          <Paper sx={{ p: { xs: 3, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
               <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Temperature Trend</Typography>
               <FormControlLabel

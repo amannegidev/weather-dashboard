@@ -149,7 +149,7 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                 </LineChart>
               </ResponsiveContainer>
               </Box>
-            )}}
+            )}
           </Paper>
         </Grid>
       </Grid>

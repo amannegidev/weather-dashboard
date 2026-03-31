@@ -233,7 +233,11 @@ const CurrentWeatherPage = () => {
           </div>
 
           {/* Graph */}
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-2xl p-6 shadow-lg">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 
+            rounded-none sm:rounded-2xl 
+            px-2 sm:px-6 py-4 sm:py-6 
+            -ml-4 -mr-4 sm:ml-0 sm:mr-0 
+            shadow-lg">
             <HourlyGraphs
               data={weatherData.hourly}
               airData={airQualityData.hourly}
