@@ -1,14 +1,183 @@
-# Getting Started with Create React App
+# Weather Dashboard 🌤️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive weather application that provides real-time weather data, air quality information, and historical weather analysis with beautiful interactive charts.
 
-## Weather Dashboard Notes
+## Features
 
-### PM10/PM2.5 Historical Limitation
+### 📍 Real-Time Weather
+- Current temperature, conditions, and weather metrics
+- Air quality index (AQI) and pollution levels
+- Sunrise/sunset times and UV index
+- Wind speed and direction
+- Humidity and rainfall probability
 
-PM10 and PM2.5 charts are sourced from the Open-Meteo Air Quality API.
+### 📊 24-Hour Forecast
+- Hourly weather predictions with interactive charts
+- Temperature trends throughout the day
+- Humidity, precipitation, visibility, and wind data
+- Air quality (PM2.5/PM10) hourly breakdown
 
-For the historical page (date range), the API only supports a limited historical window (implemented as the last 92 days). If the selected start date is older than that, the app will display a notice and PM10/PM2.5 will not be shown for that range.
+### 📈 Historical Analysis
+- Query weather data up to 2 years in the past
+- Date range selector with validation
+- Historical temperature trends
+- Precipitation patterns and wind speed analysis
+- Sunrise/sunset trends over time
+- Air quality data (last 92 days available)
+
+### 🎨 Modern UI
+- Dark theme with sleek gradient backgrounds
+- Fully responsive design (mobile, tablet, desktop)
+- Interactive cards with hover effects
+- Smooth animations and transitions
+- Material-UI components for consistency
+
+### 📍 Auto-Detection
+- GPS-powered location detection
+- Automatic weather updates for your location
+- Fallback error handling with user-friendly messages
+
+## Technology Stack
+
+- **Frontend**: React 19.2.4 with React Router v7.13.2
+- **Styling**: Tailwind CSS with Material-UI v7.3.9
+- **Charts**: Recharts v3.8.1 for data visualization
+- **API**: Open-Meteo Weather API (free, no authentication required)
+- **Data**: LocalStorage caching with 10-minute expiry
+- **Fonts**: Google Fonts Roboto family
+
+## Getting Started
+
+### Prerequisites
+- Node.js 16+ installed
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/amannegidev/weather-dashboard.git
+cd weather-dashboard
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+The app will automatically request access to your GPS location for weather data.
+
+## Available Scripts
+
+### `npm start`
+Runs the app in development mode with hot reload.
+
+### `npm run build`
+Creates an optimized production build in the `build/` folder.
+
+### `npm test`
+Launches the test runner in interactive watch mode.
+
+## API Integration
+
+The app uses the **Open-Meteo Weather API** (free tier):
+- No API keys required
+- Geographic location via GPS coordinates
+- Current weather data
+- Hourly forecast (up to 7 days)
+- Historical weather data (up to 2 years)
+- Air quality index (AQI) data
+- Rate limiting: 10,000 calls/day
+
+**Supported Weather Metrics:**
+- Temperature (°C/°F)
+- Relative humidity
+- Precipitation
+- Weather code & description
+- Wind speed & direction
+- Visibility
+- UV index
+- Air quality (PM2.5, PM10, NO₂, O₃)
+
+## Important Notes
+
+### Air Quality Data Limitations
+- Historical PM2.5/PM10 data is available for the last **92 days only** (Open-Meteo API limitation)
+- Real-time air quality data is available for current conditions
+- The app displays a warning if historical date range exceeds this window
+
+### Location Privacy
+- GPS location is requested only when needed
+- Location data is not stored or transmitted to external servers
+- Geolocation fails gracefully with error messages
+
+## Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. Push your code to GitHub (already done!)
+2. Go to [https://vercel.com](https://vercel.com)
+3. Click **"New Project"** → **Import Git Repository**
+4. Select `weather-dashboard` repository
+5. Vercel auto-detects React configuration
+6. Click **"Deploy"** and your site goes live!
+
+### Environment Variables
+No environment variables needed! The app works with public APIs out of the box.
+
+## Project Structure
+
+```
+weather-dashboard/
+├── src/
+│   ├── components/
+│   │   ├── CurrentWeatherPage.js    # Real-time weather display
+│   │   ├── HistoricalPage.js        # Historical data query
+│   │   ├── HistoricalGraphs.js      # Historical charts
+│   │   └── HourlyGraphs.js          # Hourly forecast charts
+│   ├── hooks/
+│   │   └── useGPS.js                # GPS location hook
+│   ├── services/
+│   │   └── weatherService.js        # API integration
+│   ├── App.js                       # Main app with routing
+│   ├── index.js                     # Entry point
+│   └── index.css                    # Global styles
+├── public/
+│   └── index.html
+├── tailwind.config.js               # Tailwind CSS config
+├── postcss.config.js                # PostCSS config
+└── package.json
+```
+
+## Performance
+
+- **LocalStorage Caching**: API responses cached for 10 minutes to reduce API calls
+- **Lazy Loading**: Components load on demand via React Router
+- **Optimized Charts**: Recharts renders efficiently even with large datasets
+- **Responsive Images**: SVG icons scale perfectly on all devices
+- **Code Splitting**: Production build is optimized for fast loading
+
+## Browser Support
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Mobile browsers (iOS Safari, Chrome Android)
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Support
+
+For issues or feature requests, please open an issue on GitHub: [https://github.com/amannegidev/weather-dashboard](https://github.com/amannegidev/weather-dashboard)
 
 ## Available Scripts
 
