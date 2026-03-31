@@ -49,15 +49,15 @@ const HourlyGraphs = ({ data, airData }) => {
       </Stack>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Paper sx={{ p: 3, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-              <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.125rem', color: '#f3f4f6' }}>Temperature Trend</Typography>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Temperature Trend</Typography>
               <FormControlLabel
                 control={<Switch checked={isCelsius} onChange={() => setIsCelsius(!isCelsius)} />}
                 label={<Typography sx={{ fontSize: '0.875rem', fontWeight: 600, color: '#d1d5db' }}>{isCelsius ? '°C' : '°F'}</Typography>}
               />
             </Box>
-            <ResponsiveContainer width="100%" height={320}>
+            <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
               <LineChart data={temperatureData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -69,10 +69,10 @@ const HourlyGraphs = ({ data, airData }) => {
             </ResponsiveContainer>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: '1.125rem', color: '#f3f4f6' }}>Relative Humidity</Typography>
-            <ResponsiveContainer width="100%" height={300}>
+        <Grid item xs={12}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Relative Humidity</Typography>
+            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
               <LineChart data={humidityData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -84,10 +84,10 @@ const HourlyGraphs = ({ data, airData }) => {
             </ResponsiveContainer>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: '1.125rem', color: '#f3f4f6' }}>Precipitation (mm)</Typography>
-            <ResponsiveContainer width="100%" height={300}>
+        <Grid item xs={12}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Precipitation (mm)</Typography>
+            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
               <LineChart data={precipitationData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -99,10 +99,10 @@ const HourlyGraphs = ({ data, airData }) => {
             </ResponsiveContainer>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: '1.125rem', color: '#f3f4f6' }}>Visibility (km)</Typography>
-            <ResponsiveContainer width="100%" height={300}>
+        <Grid item xs={12}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Visibility (km)</Typography>
+            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
               <LineChart data={visibilityData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -114,10 +114,10 @@ const HourlyGraphs = ({ data, airData }) => {
             </ResponsiveContainer>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: '1.125rem', color: '#f3f4f6' }}>Wind Speed (km/h)</Typography>
-            <ResponsiveContainer width="100%" height={300}>
+        <Grid item xs={12}>
+          <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Wind Speed (km/h)</Typography>
+            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
               <LineChart data={windSpeedData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -137,7 +137,7 @@ const HourlyGraphs = ({ data, airData }) => {
                 PM10/PM2.5 data not available for the selected date.
               </Typography>
             ) : (
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={{ xs: 280, sm: 300 }}>
                 <LineChart data={pmData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                   <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
