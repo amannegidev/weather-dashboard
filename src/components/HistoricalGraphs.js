@@ -58,7 +58,8 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
         <Grid item xs={12}>
           <Paper variant="outlined" sx={{ ...panelSx, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, mb: 2, color: '#f3f4f6' }}>Temperature Trends</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
+            <Box sx={{ height: { xs: 280, sm: 320 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
               <LineChart data={temperatureData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="date" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -70,12 +71,14 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                 <Line type="monotone" dataKey="min" stroke="#60a5fa" strokeWidth={2} strokeDasharray="5 5" name="Min" dot={false} />
               </LineChart>
             </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper variant="outlined" sx={{ ...panelSx, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, mb: 2, color: '#f3f4f6' }}>Sunrise & Sunset Times</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
+            <Box sx={{ height: { xs: 280, sm: 320 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
               <LineChart data={sunriseSunsetData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="date" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -86,12 +89,14 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                 <Line type="monotone" dataKey="sunset" stroke="#8b5cf6" strokeWidth={3} name="Sunset" dot={false} />
               </LineChart>
             </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper variant="outlined" sx={{ ...panelSx, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, mb: 2, color: '#f3f4f6' }}>Daily Precipitation</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
+            <Box sx={{ height: { xs: 280, sm: 320 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
               <BarChart data={precipitationData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="date" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -101,12 +106,14 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                 <Bar dataKey="precipitation" fill="#10b981" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper variant="outlined" sx={{ ...panelSx, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, mb: 2, color: '#f3f4f6' }}>Wind Speed & Direction</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
+            <Box sx={{ height: { xs: 280, sm: 320 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={windData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                 <XAxis dataKey="date" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -118,6 +125,7 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                 <Line yAxisId="right" type="monotone" dataKey="dominantDirection" stroke="#06b6d4" strokeWidth={3} name="Direction" dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -128,7 +136,8 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                 PM10/PM2.5 data not available for the selected range.
               </Typography>
             ) : (
-              <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
+              <Box sx={{ height: { xs: 280, sm: 320 }, width: '100%' }}>
+                <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={pmChartData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
                   <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
@@ -139,7 +148,8 @@ const HistoricalGraphs = ({ data, airQualityData }) => {
                   <Line type="monotone" dataKey="pm25" stroke="#f59e0b" strokeWidth={3} name="PM2.5" dot={false} />
                 </LineChart>
               </ResponsiveContainer>
-            )}
+              </Box>
+            )}}
           </Paper>
         </Grid>
       </Grid>

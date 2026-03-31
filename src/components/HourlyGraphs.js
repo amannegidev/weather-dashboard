@@ -7,7 +7,7 @@ const HourlyGraphs = ({ data, airData }) => {
 
   const temperatureData = data.temperature_2m.map((temp, index) => ({
     time: data.time[index],
-    temperature: isCelsius ? temp : (temp * 9/5) + 32,
+    temperature: isCelsius ? temp : (temp * 9 / 5) + 32,
   }));
 
   const humidityData = data.relative_humidity_2m.map((hum, index) => ({
@@ -32,10 +32,10 @@ const HourlyGraphs = ({ data, airData }) => {
 
   const pmData = airData?.time
     ? airData.time.map((time, index) => ({
-        time,
-        pm10: airData.pm10?.[index],
-        pm25: airData.pm2_5?.[index],
-      }))
+      time,
+      pm10: airData.pm10?.[index],
+      pm25: airData.pm2_5?.[index],
+    }))
     : [];
 
   return (
@@ -57,76 +57,86 @@ const HourlyGraphs = ({ data, airData }) => {
                 label={<Typography sx={{ fontSize: '0.875rem', fontWeight: 600, color: '#d1d5db' }}>{isCelsius ? '°C' : '°F'}</Typography>}
               />
             </Box>
-            <ResponsiveContainer width="100%" height={{ xs: 280, sm: 320 }}>
-              <LineChart data={temperatureData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
-                <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
-                <Brush dataKey="time" height={30} stroke="#ef4444" fill="rgba(239,68,68,0.1)" />
-                <Line type="monotone" dataKey="temperature" stroke="#ef4444" strokeWidth={3} dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
+            <Box sx={{ height: { xs: 280, sm: 320 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={temperatureData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
+                  <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
+                  <Brush dataKey="time" height={30} stroke="#ef4444" fill="rgba(239,68,68,0.1)" />
+                  <Line type="monotone" dataKey="temperature" stroke="#ef4444" strokeWidth={3} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Relative Humidity</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
-              <LineChart data={humidityData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
-                <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
-                <Brush dataKey="time" height={30} stroke="#10b981" fill="rgba(16,185,129,0.1)" />
-                <Line type="monotone" dataKey="humidity" stroke="#10b981" strokeWidth={3} dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
+            <Box sx={{ height: { xs: 250, sm: 300 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={humidityData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
+                  <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
+                  <Brush dataKey="time" height={30} stroke="#10b981" fill="rgba(16,185,129,0.1)" />
+                  <Line type="monotone" dataKey="humidity" stroke="#10b981" strokeWidth={3} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Precipitation (mm)</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
-              <LineChart data={precipitationData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
-                <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
-                <Brush dataKey="time" height={30} stroke="#f59e0b" fill="rgba(245,158,11,0.1)" />
-                <Line type="monotone" dataKey="precipitation" stroke="#f59e0b" strokeWidth={3} dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
+            <Box sx={{ height: { xs: 250, sm: 300 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={precipitationData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
+                  <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
+                  <Brush dataKey="time" height={30} stroke="#f59e0b" fill="rgba(245,158,11,0.1)" />
+                  <Line type="monotone" dataKey="precipitation" stroke="#f59e0b" strokeWidth={3} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Visibility (km)</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
-              <LineChart data={visibilityData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
-                <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
-                <Brush dataKey="time" height={30} stroke="#8b5cf6" fill="rgba(139,92,246,0.1)" />
-                <Line type="monotone" dataKey="visibility" stroke="#8b5cf6" strokeWidth={3} dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
+            <Box sx={{ height: { xs: 250, sm: 300 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={visibilityData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
+                  <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
+                  <Brush dataKey="time" height={30} stroke="#8b5cf6" fill="rgba(139,92,246,0.1)" />
+                  <Line type="monotone" dataKey="visibility" stroke="#8b5cf6" strokeWidth={3} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, background: 'linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%)', border: '1px solid rgba(107, 114, 128, 0.3)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.125rem' }, color: '#f3f4f6' }}>Wind Speed (km/h)</Typography>
-            <ResponsiveContainer width="100%" height={{ xs: 250, sm: 300 }}>
-              <LineChart data={windSpeedData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
-                <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
-                <Brush dataKey="time" height={30} stroke="#ec4899" fill="rgba(236,72,153,0.1)" />
-                <Line type="monotone" dataKey="windSpeed" stroke="#ec4899" strokeWidth={3} dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
+            <Box sx={{ height: { xs: 250, sm: 300 }, width: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={windSpeedData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
+                  <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
+                  <Brush dataKey="time" height={30} stroke="#ec4899" fill="rgba(236,72,153,0.1)" />
+                  <Line type="monotone" dataKey="windSpeed" stroke="#ec4899" strokeWidth={3} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -137,17 +147,19 @@ const HourlyGraphs = ({ data, airData }) => {
                 PM10/PM2.5 data not available for the selected date.
               </Typography>
             ) : (
-              <ResponsiveContainer width="100%" height={{ xs: 280, sm: 300 }}>
-                <LineChart data={pmData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
-                  <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                  <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
-                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
-                  <Brush dataKey="time" height={30} stroke="#ef4444" fill="rgba(239,68,68,0.1)" />
-                  <Line type="monotone" dataKey="pm10" stroke="#ef4444" strokeWidth={3} dot={false} name="PM10" />
-                  <Line type="monotone" dataKey="pm25" stroke="#3b82f6" strokeWidth={3} dot={false} name="PM2.5" />
-                </LineChart>
-              </ResponsiveContainer>
+              <Box sx={{ height: { xs: 280, sm: 300 }, width: '100%' }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={pmData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(107,114,128,0.2)" />
+                    <XAxis dataKey="time" stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                    <YAxis stroke="#9ca3af" style={{ fontSize: '12px' }} />
+                    <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1f2937', color: '#f3f4f6' }} />
+                    <Brush dataKey="time" height={30} stroke="#ef4444" fill="rgba(239,68,68,0.1)" />
+                    <Line type="monotone" dataKey="pm10" stroke="#ef4444" strokeWidth={3} dot={false} name="PM10" />
+                    <Line type="monotone" dataKey="pm25" stroke="#3b82f6" strokeWidth={3} dot={false} name="PM2.5" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </Box>
             )}
           </Paper>
         </Grid>
